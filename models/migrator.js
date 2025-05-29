@@ -6,8 +6,8 @@ const defaultMigrationsOptions = {
   dryRun: true,
   dir: resolve("infra", "migrations"),
   direction: "up",
-  verbose: true,
-  migrationsTable: "pg_migrations",
+  log: () => {},
+  migrationsTable: "pgmigrations",
 };
 
 export async function listPendingMigrations() {
