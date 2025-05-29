@@ -6,35 +6,37 @@ exports.up = (pgm) => {
       default: pgm.func("gen_random_uuid()"),
     },
 
-    // for reference, GitHub limits usernames to 39 chars,
+    // For reference, GitHub limits usernames to 39 characters.
     username: {
       type: "varchar(30)",
       notNull: true,
       unique: true,
     },
 
-    // why 254 inlenght? https://stackoverflow.com/a/1199238
+    // Why 254 in length? https://stackoverflow.com/a/1199238
     email: {
       type: "varchar(254)",
       notNull: true,
       unique: true,
     },
 
-    // why 72 in lenght? https://security.stackexchange.com/q/39849
+    // Why 60 in length? https://www.npmjs.com/package/bcrypt#hash-info
     password: {
-      type: "varchar(72)",
+      type: "varchar(60)",
       notNull: true,
     },
 
-    // why timestamp with timezone: https://justatheory.com/2012/04/postgres-use-timestamptz
+    // Why timestamp with timezone? https://justatheory.com/2012/04/postgres-use-timestamptz/
     created_at: {
       type: "timestamptz",
-      default: pgm.func("now()"),
+      notNull: true,
+      default: pgm.func("timezone('utc', now())"),
     },
 
     updated_at: {
       type: "timestamptz",
-      default: pgm.func("now()"),
+      notNull: true,
+      default: pgm.func("timezone('utc', now())"),
     },
   });
 };
