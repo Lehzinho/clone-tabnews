@@ -31,6 +31,7 @@ async function findOneByUsername(username) {
   }
 }
 
+
 async function create(userInputValues) {
   await validateUniqueEmail(userInputValues.email);
   await validateUniqueUsername(userInputValues.username);

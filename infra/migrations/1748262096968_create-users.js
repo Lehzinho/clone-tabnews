@@ -14,6 +14,7 @@ exports.up = (pgm) => {
     },
 
     // why 254 inlenght? https://stackoverflow.com/a/1199238
+
     email: {
       type: "varchar(254)",
       notNull: true,
@@ -21,6 +22,7 @@ exports.up = (pgm) => {
     },
 
     // why 60 in lenght? https://www.npmjs.com/package/bcrypt#hash-info
+
     password: {
       type: "varchar(60)",
       notNull: true,
@@ -31,12 +33,14 @@ exports.up = (pgm) => {
       type: "timestamptz",
       default: pgm.func("timezone('utc', now())"),
       notNull: true,
+
     },
 
     updated_at: {
       type: "timestamptz",
       default: pgm.func("timezone('utc', now())"),
       notNull: true,
+
     },
   });
 };
