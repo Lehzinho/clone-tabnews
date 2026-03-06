@@ -36,3 +36,5 @@ export default async function migrations(request, response) {
 
   return response.status(405).end();
 }
+
+// Preveiw Db setup
